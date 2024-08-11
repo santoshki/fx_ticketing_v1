@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fx Ticketing alpha_v1.0</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage_style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <div class="container">
+    <div class="brand-logo"></div>
+    <div class="brand-title">Fx Ticketing Tool</div>
+    <div class="inputs">
+        <form action="/handle-request" method="post">
+        <button type="submit" name="ticket_queue_button">Ticket Queue</button>
+        <button type="submit" name="create_new_ticket_button">Create New Ticket</button>
+    </form>
+    </div>
+    </div>
+</body>
+</html>
