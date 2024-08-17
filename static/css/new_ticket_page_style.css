@@ -1,0 +1,81 @@
+/* Ensure overall form container styling */
+.form-container {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Flexbox styling for form groups */
+.form-group {
+    display: flex;
+    align-items: center; /* Vertically align label and input */
+    margin-bottom: 15px;
+}
+
+/* Label styling */
+.form-group label {
+    flex-basis: 200px; /* Adjust width as needed */
+    margin-right: 15px; /* Space between label and input */
+    font-weight: bold;
+    text-align: left; /* Align label text to the left */
+}
+
+/* Input field styling */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    flex-grow: 1; /* Make input fields take up remaining space */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Additional styling for textarea */
+.form-group textarea {
+    resize: vertical;
+}
+
+/* Button container styling */
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Distribute buttons evenly with equal space between */
+    margin-top: 20px; /* Add some space above the button container */
+}
+
+/* Button styling */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Reset button specific styling */
+button[type="reset"] {
+    background-color: #6c757d;
+}
+
+button[type="reset"]:hover {
+    background-color: #5a6268;
+}
+
+/* Back button specific styling */
+button[type="button"] {
+    background-color: #28a745;
+}
+
+button[type="button"]:hover {
+    background-color: #218838;
+}
