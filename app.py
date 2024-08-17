@@ -15,7 +15,7 @@ def handle_buttons():
         return "Loading ticket queue!"
     elif 'create_new_ticket_button' in request.form:
         print("New ticket to be created!")
-        return "New ticket to be created!"
+        return render_template('new_ticket_page.html')
     else:
         return "No button was pressed!"
 
