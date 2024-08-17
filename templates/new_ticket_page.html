@@ -9,23 +9,23 @@
 <body>
 
 <div class="form-container">
-    <form action="#" method="post">
+    <form action="{{ url_for('new_create_ticket') }}" method="post">
         <!-- Field 1: Ticket Title -->
         <div class="form-group">
-            <label for="field_ticket_title">Ticket Title</label>
-            <input type="text" id="field_ticket_title" name="ticket_title" required>
+            <label for="ticket_title">Ticket Title</label>
+            <input type="text" id="ticket_title" name="ticket_title" required>
         </div>
 
         <!-- Field 2: Ticket Description -->
         <div class="form-group">
-            <label for="field_ticket_description">Ticket Description</label>
-            <textarea id="field_ticket_description" name="ticket_description" rows="10" required></textarea>
+            <label for="ticket_description">Ticket Description</label>
+            <textarea id="ticket_description" name="ticket_description" rows="10" required></textarea>
         </div>
 
         <!-- Field 3: Ticket Priority -->
         <div class="form-group">
-            <label for="field_ticket_priority">Ticket Priority</label>
-            <select id="field_ticket_priority" name="priority" required>
+            <label for="ticket_priority">Ticket Priority</label>
+            <select id="ticket_priority" name="ticket_priority" required>
                 <option value="" disabled selected>Select</option>
                 <option value="low">Low (p3)</option>
                 <option value="medium">Medium (p2)</option>
@@ -35,8 +35,8 @@
 
         <!-- Field 4: Assignment Group -->
         <div class="form-group">
-            <label for="field_ticket_assignment_group">Assignment Group</label>
-            <select id="field_ticket_assignment_group" name="assignment_group" required>
+            <label for="ticket_assignment_group">Assignment Group</label>
+            <select id="ticket_assignment_group" name="ticket_assignment_group" required>
                 <option value="" disabled selected>Select</option>
                 <option value="group1">Assignment Group 1</option>
                 <option value="group2">Assignment Group 2</option>
@@ -46,30 +46,59 @@
 
         <!-- Field 5: Creation Date -->
         <div class="form-group">
-            <label for="field_creation_date">Creation Date</label>
-            <input type="text" id="field_creation_date" name="creation_date" readonly>
+            <label for="ticket_creation_date">Creation Date</label>
+            <input type="text" id="ticket_creation_date" name="ticket_creation_date" readonly>
         </div>
 
         <!-- Field 6: Created By -->
         <div class="form-group">
-            <label for="field_ticket_created_by">Created By</label>
-            <textarea id="field_ticket_created_by" name="created_by" rows="2" required></textarea>
+            <label for="ticket_created_by">Created By</label>
+            <textarea id="ticket_created_by" name="ticket_created_by" rows="2" required></textarea>
+        </div>
+
+        <!-- File Attachment -->
+        <div class="form-group">
+            <label for="ticket_attachment">Attachments</label>
+            <div class="attachment-container">
+                <input type="file" id="ticket_attachment" name="attachment" style="display: none;">
+                <button type="button" onclick="document.getElementById('ticket_attachment').click();">
+                    <i class="fa fa-pin"></i> Attach File
+                </button>
+                <span id="file_name">No file selected</span>
+            </div>
         </div>
 
         <div class="button-container">
             <button type="button" onclick="history.back()">Back</button>
-            <button type="submit">Submit</button>
-            <button type="reset">Reset</button>
+            <button type="reset" name="reset">Reset</button>
+            <button type="submit" name="submit">Submit</button>
         </div>
     </form>
 </div>
 
 <script>
-    // JavaScript to set today's date
+
     document.addEventListener('DOMContentLoaded', (event) => {
         const today = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
         document.getElementById('field_creation_date').value = today;
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('ticket_creation_date').value = today;
+    });
+
+    function displayFileName() {
+        const fileInput = document.getElementById('ticket_attachment');
+        const fileNameDisplay = document.getElementById('file_name');
+        if (fileInput.files.length > 0) {
+            fileNameDisplay.textContent = fileInput.files[0].name;
+        } else {
+            fileNameDisplay.textContent = 'No file selected';
+        }
+    }
+
+    document.getElementById('ticket_attachment').addEventListener('change', displayFileName);
 </script>
 
 </body>
